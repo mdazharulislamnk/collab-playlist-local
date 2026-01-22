@@ -45,6 +45,36 @@ This repository implements the assignment using:
 16. [Roadmap / If I Had More Time](#16-roadmap--if-i-had-more-time)  
 
 ---
+## Requirements
+
+| Requirement / Task | Status | Where / Notes |
+|---|---|---|
+| Stack: SQLite + Prisma • Express • SSE • React (JS) | ✅ Done | Server + client implemented in JS. |
+| Shared playlist (single collaborative playlist) | ✅ Done | Stored in SQLite; all clients see same playlist. |
+| Track library (predefined) | ✅ Done | Seed provides track library; `GET /api/tracks`. |
+| Initial playlist (8–10 tracks) | ✅ Done | Seed includes initial playlist items + one playing. |
+| Add track to playlist | ✅ Done | `POST /api/playlist` + UI Add. |
+| Prevent duplicate track add | ✅ Done | Returns `DUPLICATE_TRACK` on duplicate. |
+| Remove track from playlist | ✅ Done | `DELETE /api/playlist/:id` + UI Remove. |
+| Reorder via drag-and-drop | ✅ Done | UI DnD + `PATCH /api/playlist/:id` updates `position`. |
+| Position algorithm (required exact implementation) | ✅ Done | Implemented + tested (server + client). |
+| Voting up/down (votes can be negative) | ✅ Done | `POST /api/playlist/:id/vote`. |
+| Optional auto-sort by votes toggle | ✅ Done | UI toggle and derived ordering. |
+| Mark track as “Now Playing” | ✅ Done | `PATCH /api/playlist/:id { is_playing: true }`. |
+| Now Playing exclusivity (only one true) | ✅ Done | Server enforces exclusivity. |
+| Search/filter track library | ✅ Done | Client search includes genre. |
+| Realtime endpoint: GET /api/stream (SSE) | ✅ Done | Implemented and tested. |
+| Heartbeat ping event | ✅ Done | `{ type: "ping", ts }` every ~15s. |
+| Realtime event types | ✅ Done | track.added/removed/moved/voted/playing + playlist.reordered. |
+| Connection indicator (online/offline/reconnecting) | ✅ Done | Client shows status. |
+| Auto-reconnect with exponential backoff | ✅ Done | Backoff with a cap. |
+| Optimistic UI + reconcile | ✅ Done | Optimistic updates + server reconciliation. |
+| Offline queue | ✅ Done | Queue + replay on reconnect. |
+| Dedup / out-of-order prevention | ✅ Done | Monotonic `eventId`, client ignores stale. |
+| Tests pass with single command | ✅ Done | `npm test` runs server + client tests. |
+
+---
+
 
 ## 1) Tech Stack
 
